@@ -1,11 +1,6 @@
-
 services:
   pg:
-    build:
-      dockerfile: ./docker/postgres-dockerfile
-      context: .
-      args:
-        ICHIRAN_DB_URL: "https://github.com/tshatrov/ichiran/releases/download/ichiran-250113/ichiran-250113.pgdump"
+    image: ghcr.io/tassa-yoniso-manasi-karoto/langkit-ichiran-pg:latest
     shm_size: "1gb"
     environment:
       POSTGRES_PASSWORD: "password"
@@ -14,6 +9,4 @@ services:
       - ${PWD}/docker/pgdata:/var/lib/postgresql/data
 
   main:
-    build:
-      dockerfile: ./docker/sbcl-dockerfile
-      context: .
+    image: ghcr.io/tassa-yoniso-manasi-karoto/langkit-ichiran-main:latest
